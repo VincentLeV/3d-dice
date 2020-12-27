@@ -1,0 +1,205 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+:root {
+  --dice-f: rgba(255,255,255, 0.95); 
+}
+
+html,
+body {
+  height: 100vh;
+  min-height: 100vh;
+  width: 100%;
+
+}
+
+.page-wrapper {
+  height: 100vh;
+  min-height: 100vh;
+  width: 100%;
+  background: rgb(85,85,85);
+  background: radial-gradient(circle, rgba(85,85,85,1) 0%, rgba(0,0,0,1) 15%);
+  position: relative;
+}
+
+.dice-container {
+  margin: auto auto 50px auto;
+  width: 100%;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%,-40%);
+}
+
+.dice-scene {
+  margin: auto auto;
+  width: 200px;
+  height: 200px;
+  perspective: 1000px;
+  transform: scale(0.9);
+}
+
+.dice {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  /* Resolve distortion */
+  transform: translateZ(-100px);
+  transition: transform 1s;
+  transform: scale(0.9);
+  
+}
+
+/* Effect */
+.dice__face {
+  position: absolute;
+  background: var(--dice-f);
+  width: 200px;
+  height: 200px;
+  border-radius: 50px;
+  display: flex;
+  box-shadow: 0px 10px 35px -15px rgba(255,255,255,0.8);
+}
+
+/* TranslateZ = (face's width / 2) */
+
+/* Face 1 */
+.dice__face.front { transform: rotateY(0) translateZ(100px); }
+
+/* Face 2*/
+.dice__face.back { transform: rotateY(180deg) translateZ(100px);}
+
+/* Face 5 */
+.dice__face.top { 
+  transform: rotateX(90deg) translateZ(100px); 
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+/* Face 6 */
+.dice__face.bottom { 
+  transform: rotateX(-90deg) translateZ(100px); 
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Face 3 */
+.dice__face.left { 
+  transform: rotateY(-90deg) translateZ(100px); 
+  display: grid;
+}
+
+/* Face 4 */
+.dice__face.right { 
+  transform: rotateY(90deg) translateZ(100px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Arranging the dots on face 5 */
+.dot {
+  background: black;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: auto auto;
+}
+
+.dot-1 {
+  background: red;
+}
+
+.dot-5-m {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.dot-5-t1 {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.dot-5-t2 {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.dot-5-b1 {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.dot-5-b2 {
+  grid-column: 3;
+  grid-row: 3;
+}
+
+.button {
+  margin: 60px auto 0 auto;
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -65%);
+}
+
+#roll {
+  margin: 20px auto;
+  width: 180px;
+  height: 45px;
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  transform: scale(0.9);
+  transition: 0.4s all ease;
+}
+
+#roll:hover {
+  transform: scale(1);
+}
+
+#roll:focus {
+  outline: none;
+  border: none;
+}
+
+@media screen and (max-width: 600px) {
+  .dice-scene, 
+  .dice {
+    transform: scale(0.7);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/* MY WEBSITE */
+.me {
+  position: absolute;
+  top: 2vh;
+  right: 2vw;
+  z-index: 100;
+  cursor: pointer;
+}
+
+#myLogo {
+  width: 45px;
+  height: 45px;
+}
